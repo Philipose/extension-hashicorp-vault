@@ -1,5 +1,5 @@
 name: custom:dtext-hashicorp-vault
-version: 0.0.5
+version: 0.0.6
 minDynatraceVersion: "1.227"
 author:
   name: Aaron Philipose
@@ -19,11 +19,13 @@ prometheus:
     interval: 1m
     featureSet: all
     subgroups:
-      -subgroup: vault barrier
+      - subgroup: vault barrier
         metrics:
           - key: com.dtc.hashicorpvault.vault_barrier_get
             value: metric:vault_barrier_get
             type: gauge
+            featureSet: barrier
           - key: com.dtc.hashicorpvault.vault_barrier_get_sum
             value: metric:vault_barrier_get_sum
             type: gauge
+            featureSet: barrier
