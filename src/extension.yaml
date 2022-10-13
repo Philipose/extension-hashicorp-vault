@@ -13,6 +13,10 @@ metrics:
     metadata: 
       displayName: Vault Barrier Get Sum
       unit: Second
+  - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+    metadata: 
+      displayName: Vault Barrier Get Sum
+      unit: Count
 
 prometheus:
   - group: vault metrics 
@@ -28,4 +32,8 @@ prometheus:
           - key: com.dtc.hashicorpvault.vault_barrier_get_sum
             value: metric:vault_barrier_get_sum
             type: gauge
+            featureSet: barrier
+          - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+            value: metric:vault_barrier_get_sum
+            type: count
             featureSet: barrier
