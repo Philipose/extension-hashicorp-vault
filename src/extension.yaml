@@ -1,21 +1,21 @@
-name: custom:dtext-hashicorp-vault
-version: 0.0.6
+name: custom:com.hashicorp.vault
+version: 0.0.8
 minDynatraceVersion: "1.227"
 author:
   name: Aaron Philipose
 
 metrics:
-  - key: com.dtc.hashicorpvault.vault_barrier_get
+  - key: com.hashicorp.vault.vault_barrier_get
     metadata: 
       displayName: Vault Barrier Get
       unit: Second
-  - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+  - key: com.hashicorp.vault.vault_barrier_get_sum
     metadata: 
       displayName: Vault Barrier Get Sum
       unit: Second
-  - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+  - key: com.hashicorp.vault.vault_barrier_get_count
     metadata: 
-      displayName: Vault Barrier Get Sum
+      displayName: Vault Barrier Get Count
       unit: Count
 
 prometheus:
@@ -25,15 +25,15 @@ prometheus:
     subgroups:
       - subgroup: vault barrier
         metrics:
-          - key: com.dtc.hashicorpvault.vault_barrier_get
+          - key: com.hashicorp.vault.vault_barrier_get
             value: metric:vault_barrier_get
             type: gauge
             featureSet: barrier
-          - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+          - key: com.hashicorp.vault.vault_barrier_get_sum
             value: metric:vault_barrier_get_sum
             type: gauge
             featureSet: barrier
-          - key: com.dtc.hashicorpvault.vault_barrier_get_sum
-            value: metric:vault_barrier_get_sum
+          - key: com.hashicorp.vault.vault_barrier_get_count
+            value: metric:vault_barrier_get_count
             type: count
             featureSet: barrier
