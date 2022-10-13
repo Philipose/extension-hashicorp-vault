@@ -1,5 +1,5 @@
-name: custom:com.dtc.extension.hashicorpvault
-version: 0.0.3
+name: custom:dtext-hashicorp-vault
+version: 0.0.5
 minDynatraceVersion: "1.227"
 author:
   name: Aaron Philipose
@@ -8,11 +8,19 @@ prometheus:
   - group: Hashicorp_Vault_Barrier 
     interval: 1m
     metrics:
-      - key: com.dtc.extension.vault_barrier_get
+      - key: com.dtc.hashicorpvault.vault_barrier_get
         value: metric:vault_barrier_get
         type: gauge
+      - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+        value: metric:vault_barrier_get_sum
+        type: gauge
+
 metrics:
-  - key: com.dtc.extension.vault_barrier_get
+  - key: com.dtc.hashicorpvault.vault_barrier_get
     metadata: 
-      displayName: 50th Percentile of Vault Barrier Get
+      displayName: Vault Barrier Get
+      unit: Second
+  - key: com.dtc.hashicorpvault.vault_barrier_get_sum
+    metadata: 
+      displayName: Vault Barrier Get Sum
       unit: Second
