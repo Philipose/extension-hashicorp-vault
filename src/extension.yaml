@@ -23,18 +23,6 @@ metrics:
     metadata: 
       displayName: Go Bytes Allocated and in Use
       unit: Byte
-  - key: com.hashicorp.vault.vault_barrier_get
-    metadata: 
-      displayName: Vault Barrier Get
-      unit: Second
-  - key: com.hashicorp.vault.vault_barrier_get_sum
-    metadata: 
-      displayName: Vault Barrier Get Sum
-      unit: Second
-  - key: com.hashicorp.vault.vault_barrier_get_count
-    metadata: 
-      displayName: Vault Barrier Get Count
-      unit: Count
   - key: com.hashicorp.vault.vault_runtime_sys_bytes
     metadata: 
       displayName: Vault Runtime Bytes
@@ -63,20 +51,6 @@ prometheus:
           - key: com.hashicorp.vault.go_memstats_alloc_bytes
             value: metric:go_memstats_alloc_bytes
             type: gauge 
-      - subgroup: vault barrier
-        metrics:
-          - key: com.hashicorp.vault.vault_barrier_get
-            value: metric:vault_barrier_get
-            type: gauge
-            featureSet: barrier
-          - key: com.hashicorp.vault.vault_barrier_get_sum
-            value: metric:vault_barrier_get_sum
-            type: gauge
-            featureSet: barrier
-          - key: com.hashicorp.vault.vault_barrier_get_count
-            value: metric:vault_barrier_get_count
-            type: count
-            featureSet: barrier
       - subgroup: vault runtime
         featureSet: runtime
         metrics:
