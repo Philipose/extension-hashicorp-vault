@@ -4,6 +4,8 @@ minDynatraceVersion: "1.227"
 author:
   name: Aaron Philipose
 
+
+# Currently Summary Types not supported!
 metrics:
   - key: com.hashicorp.vault.go_gc_duration_seconds
     metadata: 
@@ -17,6 +19,10 @@ metrics:
     metadata: 
       displayName: Information about the Go environment
       unit: Unspecified
+  - key: com.hashicorp.vault.go_memstats_alloc_bytes
+    metadata: 
+      displayName: Go Bytes Allocated and in Use
+      unit: Byte
   - key: com.hashicorp.vault.vault_barrier_get
     metadata: 
       displayName: Vault Barrier Get
@@ -48,15 +54,15 @@ prometheus:
       - subgroup: vault go
         featureSet: go
         metrics:
-          - key: com.hashicorp.vault.go_gc_duration_seconds
-            value: metric:go_gc_duration_seconds
-            type: gauge
           - key: com.hashicorp.vault.go_goroutines
             value: metric:go_goroutines
             type: gauge
           - key: com.hashicorp.vault.go_info
             value: metric:go_info
             type: gauge
+          - key: com.hashicorp.vault.go_memstats_alloc_bytes
+            value: metric:go_memstats_alloc_bytes
+            type: gauge 
       - subgroup: vault barrier
         metrics:
           - key: com.hashicorp.vault.vault_barrier_get
