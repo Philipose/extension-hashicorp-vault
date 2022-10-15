@@ -1,10 +1,22 @@
 name: custom:com.hashicorp.vault
-version: 0.0.12
+version: 0.0.15
 minDynatraceVersion: "1.227"
 author:
   name: Aaron Philipose
 
 metrics:
+  - key: com.hashicorp.vault.go_gc_duration_seconds
+    metadata: 
+      displayName: Go Garbage Collection Duration (S)
+      unit: Second
+  - key: com.hashicorp.vault.go_goroutines
+    metadata: 
+      displayName: Current GoRoutines Running
+      unit: Unspecified
+  - key: com.hashicorp.vault.go_info
+    metadata: 
+      displayName: Information about the Go environment
+      unit: Unspecified
   - key: com.hashicorp.vault.vault_barrier_get
     metadata: 
       displayName: Vault Barrier Get
@@ -19,8 +31,12 @@ metrics:
       unit: Count
   - key: com.hashicorp.vault.vault_runtime_sys_bytes
     metadata: 
-      displayName: Vault Barrier Get Count
-      unit: Bytes
+      displayName: Vault Runtime Bytes
+      unit: Byte
+  - key: com.hashicorp.vault.vault_runtime_heap_objects
+    metadata: 
+      displayName: Vault Runtime Heap Objects
+      unit: Unspecified
 
 
 prometheus:
@@ -29,6 +45,18 @@ prometheus:
       minutes: 1
     featureSet: all
     subgroups:
+      - subgroup: vault go
+        featureSet: go
+        metrics:
+          - key: com.hashicorp.vault.go_gc_duration_seconds
+            value: metric:go_gc_duration_seconds
+            type: gauge
+          - key: com.hashicorp.vault.go_goroutines
+            value: metric:go_goroutines
+            type: gauge
+          - key: com.hashicorp.vault.go_info
+            value: metric:go_info
+            type: gauge
       - subgroup: vault barrier
         metrics:
           - key: com.hashicorp.vault.vault_barrier_get
@@ -48,5 +76,9 @@ prometheus:
         metrics:
           - key: com.hashicorp.vault.vault_runtime_sys_bytes
             value: metric:vault_runtime_sys_bytes
+            type: gauge
+            featureSet: runtime
+          - key: com.hashicorp.vault.vault_runtime_heap_objects
+            value: metric:vault_runtime_heap_objects
             type: gauge
             featureSet: runtime
